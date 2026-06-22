@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>从入口到体验 · 理解世界杯的观看逻辑</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f3f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", "Helvetica Neue", sans-serif;
+      line-height: 1.7;
+      color: #2d3436;
+      padding: 2rem 1.5rem;
+    }
+
+    .page-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* ===== 开场 ===== */
+    .hero-brief {
+      text-align: center;
+      margin: 2.5rem 0 2rem;
+      padding: 2.5rem 1.5rem 1.8rem;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e9edf0;
+    }
+
+    .hero-brief h1 {
+      font-size: 2.2rem;
+      font-weight: 560;
+      letter-spacing: -0.01em;
+      color: #1e272e;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-brief .sub-line {
+      font-size: 1.05rem;
+      color: #636e72;
+      max-width: 520px;
+      margin: 0.3rem auto 0;
+      font-weight: 390;
+      border-top: 1px solid #ecf0f1;
+      padding-top: 1.2rem;
+    }
+
+    /* ===== 卡片通用 ===== */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e6eaee;
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 520;
+      color: #1e272e;
+      margin-bottom: 1rem;
+      border-left: 4px solid #b0bec5;
+      padding-left: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #2d3436;
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      color: #4a525b;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===== 内联链接 ===== */
+    .inline-link {
+      color: #2b5876;
+      text-decoration: none;
+      border-bottom: 1px solid #b0c4d8;
+      transition: border-color 0.15s, color 0.15s;
+      font-weight: 470;
+    }
+
+    .inline-link:hover {
+      border-bottom-color: #1e3d56;
+      color: #1a3a4f;
+    }
+
+    /* ===== 特点列表 ===== */
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.2rem 0 0.6rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      padding: 0.6rem 0.8rem 0.6rem 0;
+      border-bottom: 1px dashed #e7eaed;
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-marker {
+      flex-shrink: 0;
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #eaf0f5;
+      border-radius: 40%;
+      text-align: center;
+      line-height: 28px;
+      font-size: 0.85rem;
+      color: #3a5b6f;
+    }
+
+    .feature-content {
+      flex: 1;
+    }
+
+    .feature-content strong {
+      font-weight: 560;
+      color: #1e2b34;
+    }
+
+    /* ===== 温和结尾 ===== */
+    .closing-note {
+      background: #fafbfc;
+      text-align: center;
+      border: 1px solid #e1e7ec;
+      padding: 2rem 2rem 2.2rem;
+      border-radius: 24px;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+    }
+
+    .closing-note p {
+      font-size: 1rem;
+      color: #4a555e;
+      max-width: 580px;
+      margin: 0 auto 0.5rem;
+    }
+
+    .closing-note .mark {
+      display: inline-block;
+      background: #ecf2f8;
+      padding: 0.2rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2b4b60;
+      margin-top: 0.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+      .hero-brief h1 {
+        font-size: 1.7rem;
+      }
+      .hero-brief {
+        padding: 1.8rem 1rem 1.2rem;
+      }
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+      .card h2 {
+        font-size: 1.25rem;
+        padding-left: 0.7rem;
+      }
+      .feature-list li {
+        flex-direction: row;
+        gap: 0.6rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-brief {
+        margin-top: 3rem;
+      }
+    }
+
+    /* 小间距微调 */
+    .mt-1 { margin-top: 0.2rem; }
+    .muted { color: #667980; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- 开场短句 -->
+  <div class="hero-brief">
+    <h1>进入赛场之前</h1>
+    <div class="sub-line">人们往往忽略一件事：一个清晰、稳定的入口，才是所有观看体验的起点。</div>
+  </div>
+
+  <!-- 承接段落 -->
+  <div class="card">
+    <h2>稳定入口意味着什么</h2>
+    <p>四年一度的盛会，汇集了全球数十亿人的目光。但对普通观众而言，首要问题始终是：<strong>从哪里开始看？</strong> 今天的网络信息庞杂，链接、预告、直播源、讨论区层层叠叠，一个结构清晰、访问稳定的页面，反而成为稀缺资源。</p>
+    <p>正是出于这样的观察，我们重新梳理了浏览路径——不需要跳转多个标签页，不必在弹窗和广告之间寻找直播按钮。当页面本身成为信息的锚点，观看的节奏才真正属于自己。</p>
+    <p style="margin-top: 1.2rem;">在这套逻辑下，<a href="https://play-mjm2026cup.com" class="inline-link">世界杯</a>的呈现方式也回归到最朴素的期待：打开即用，板块分明，知道自己身在何处，也清楚下一步可以做什么。</p>
+  </div>
+
+  <!-- 特点列表 用卡片包裹 -->
+  <div class="card">
+    <h2>页面设计的四层考虑</h2>
+    <ul class="feature-list">
+      <li>
+        <span class="feature-marker">1</span>
+        <div class="feature-content"><strong>分区明确，忽略干扰</strong> —— 核心内容区与辅助信息分开布局，不堆砌横幅或自动播放元素，减少视觉负重。</div>
+      </li>
+      <li>
+        <span class="feature-marker">2</span>
+        <div class="feature-content"><strong>文字优先，克制装饰</strong> —— 以解释性文本和简短提示为主，避免过度使用图标或动效渲染，信息传达比氛围更重要。</div>
+      </li>
+      <li>
+        <span class="feature-marker">3</span>
+        <div class="feature-content"><strong>响应式但不失骨肉</strong> —— 小屏幕上保持可读间距，卡片结构保留呼吸感，不因屏幕缩小而挤压文字或强制隐藏内容。</div>
+      </li>
+      <li>
+        <span class="feature-marker">4</span>
+        <div class="feature-content"><strong>链接即路径</strong> —— 每一个可点击的文本都指向明确的下一步，尤其是 <a href="https://play-mjm2026cup.com" class="inline-link">世界杯</a> 这样的核心入口，始终保持在合理的叙述动线中，不突兀，不隐藏。</div>
+      </li>
+    </ul>
+    <p class="muted" style="margin-top: 1.2rem;">—— 这四点听起来简单，但在实际浏览中，往往决定了用户是「留下来看完」还是「皱着眉关掉」。</p>
+  </div>
+
+  <!-- 场景提示：接入前的小说明 -->
+  <div class="card">
+    <h2>一个常见的观看场景</h2>
+    <p>假设比赛日在晚上八点。你打开收藏夹，找到熟悉的链接，页面加载后第一眼看到的是清晰的导航、赛程摘要与一个稳定的入口标识。没有倒计时弹窗遮住内容，也没有要求注册才能查看时间表。</p>
+    <p>你直接点进 <a href="https://play-mjm2026cup.com" class="inline-link">世界杯</a> 板块，页面显示当前阶段、已结束场次的简评、以及未来两日的对阵。信息密度刚好——既不会空到让人疑惑，也不会密到需要滚动三屏才能找到重点。</p>
+    <p style="margin-top: 0.8rem;">你甚至不需要思考「这个按钮是干嘛的」，因为每个区域都配有简短的功能提示。这种体验，就是我们反复调整页面结构所追求的结果。</p>
+  </div>
+
+  <!-- 温和结尾 + 象征性的FAQ摘要风格 -->
+  <div class="closing-note">
+    <p>页面不是舞台本身，但它是通往舞台的那扇门。我们不夸大入口的意义，但也相信：一个不迷路、不绕路的观看起点，本身就是对时间最大的尊重。</p>
+    <p style="margin-top: 0.8rem; font-style: italic; color: #566d7a;">如果你还在思考「从哪里开始看比较稳」，不妨试一试上面提到的路径。</p>
+    <span class="mark">常见疑问 · 入口是否长期可用？</span>
+    <p style="margin-top: 1rem; font-size: 0.95rem; color: #5d6f7a;">通常情况下，<a href="https://play-mjm2026cup.com" class="inline-link">世界杯</a> 页面保持稳定访问；如遇临时调整，页面内也会以显著方式做出提示。</p>
+  </div>
+
+  <!-- 极简声明式footer (无多余链接) -->
+  <div style="text-align: center; font-size: 0.8rem; color: #a0b0b8; padding: 1.5rem 0 0.5rem; border-top: 1px solid #e2e9ef; margin-top: 2.2rem;">
+    内容仅供说明 · 叙述逻辑基于稳定入口与页面结构
+  </div>
+
+</div>
+</body>
+</html>
